@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Upload, Camera, Zap, CheckCircle2, ArrowRight, Home, Menu, ChevronDown, DollarSign, Wrench, Search } from 'lucide-react';
+import { Upload, Camera, Zap, CheckCircle2, ArrowRight, Home, Menu, ChevronDown, DollarSign, Wrench, Search, Github, ExternalLink, Settings } from 'lucide-react';
 import { AppStatus, EquipmentData } from './types';
 import { analyzeEquipmentImage } from './services/geminiService';
 import { AnalysisLogs } from './components/AnalysisLogs';
@@ -43,35 +43,44 @@ export default function App() {
     <div className="font-sans text-gray-900 bg-white">
       
       {/* Top Banner */}
-      <div className="bg-orange-50 py-2 text-center text-xs font-bold tracking-widest text-orange-600 uppercase print:hidden">
-        HomeOps Technology Demo
+      <div className="bg-blue-50 py-2 text-center text-xs font-bold tracking-widest text-blue-800 uppercase print:hidden">
+        Open Source Visual Triage Template
       </div>
 
       {/* Navbar */}
       <nav className="border-b border-gray-100 py-4 print:hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <div className="bg-orange-500 p-1.5 rounded-lg text-white">
-              <Home size={20} fill="currentColor" strokeWidth={2.5} />
+          <div className="flex items-center gap-3">
+            {/* Custom Logo: Orange Gear with White House */}
+            <div className="relative flex items-center justify-center">
+                <Settings size={34} className="text-orange-600" fill="currentColor" strokeWidth={0} />
+                <Home size={16} className="text-white absolute mb-0.5" fill="currentColor" strokeWidth={0} />
             </div>
-            <span className="font-bold text-xl tracking-tight text-gray-900">HomeOps</span>
-          </div>
-
-          <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-gray-600">
-            <a href="#" className="hover:text-gray-900">Why HomeOps</a>
-            <a href="#" className="hover:text-gray-900 flex items-center gap-1">Case Studies <ChevronDown size={14}/></a>
-            <a href="#" className="hover:text-gray-900 flex items-center gap-1">Products <ChevronDown size={14}/></a>
-            <a href="#" className="hover:text-gray-900 flex items-center gap-1">Resources <ChevronDown size={14}/></a>
-            <a href="#" className="hover:text-gray-900">Blog</a>
+            <div className="flex flex-col -space-y-1">
+                <span className="font-bold text-gray-900 text-xl tracking-tight leading-none">Instant Quote</span>
+                <span className="text-gray-500 text-sm font-medium leading-none">by HomeOps</span>
+            </div>
           </div>
 
           <div className="flex items-center gap-4">
-             <button className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2.5 px-6 rounded-md transition-colors text-sm">
-              Book Intro Call
-            </button>
-            <button className="md:hidden text-gray-500">
-              <Menu size={24} />
-            </button>
+             <a 
+               href="https://github.com/flynndavid/HomeOps-Visual-Triage-Tool" 
+               target="_blank"
+               rel="noopener noreferrer"
+               className="hidden sm:flex items-center gap-2 text-gray-600 hover:text-gray-900 font-medium text-sm transition-colors"
+             >
+              <Github size={18} />
+              <span>Clone Repo</span>
+            </a>
+            <a 
+               href="https://homeopshq.com/start" 
+               target="_blank"
+               rel="noopener noreferrer"
+               className="bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2.5 px-5 rounded-md transition-colors text-sm flex items-center gap-2"
+            >
+              <span>Customize for Business</span>
+              <ExternalLink size={14} />
+            </a>
           </div>
         </div>
       </nav>
@@ -312,15 +321,15 @@ export default function App() {
            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
               <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
                  <div className="text-orange-500 font-bold mb-2">1. Audit</div>
-                 <p className="text-sm text-gray-600">We map your current dispatch and quoting workflow to identify where this agent adds the most value.</p>
+                 <p className="text-sm text-gray-600">Map current dispatch and quoting workflow to identify where this agent adds value.</p>
               </div>
               <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
                  <div className="text-orange-500 font-bold mb-2">2. Build</div>
-                 <p className="text-sm text-gray-600">We customize the agent's output format, integrate it with your CRM, and train it on your pricing models.</p>
+                 <p className="text-sm text-gray-600">Customize the agent's output format, integrate with CRM, and train on pricing models.</p>
               </div>
               <div className="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
                  <div className="text-orange-500 font-bold mb-2">3. Deploy</div>
-                 <p className="text-sm text-gray-600">Your techs get a link (or it lives inside your app). They snap a photo, get a recommendation, and close more deals.</p>
+                 <p className="text-sm text-gray-600">Techs get a link. They snap a photo, get a recommendation, and close more deals.</p>
               </div>
            </div>
         </div>
@@ -330,7 +339,7 @@ export default function App() {
       <section className="py-20 bg-white print:hidden">
          <div className="max-w-4xl mx-auto px-4">
             <div className="border border-orange-100 rounded-2xl p-10 text-center shadow-sm">
-                <h3 className="font-bold text-gray-900 text-xl mb-6">The Goal: Empower Your Technicians</h3>
+                <h3 className="font-bold text-gray-900 text-xl mb-6">Ready to Build This?</h3>
                 <div className="flex flex-col gap-3 items-start max-w-lg mx-auto mb-10">
                    <div className="flex gap-2 text-left">
                       <CheckCircle2 size={18} className="text-orange-500 shrink-0 mt-0.5" />
@@ -338,25 +347,33 @@ export default function App() {
                    </div>
                    <div className="flex gap-2 text-left">
                       <CheckCircle2 size={18} className="text-orange-500 shrink-0 mt-0.5" />
-                      <span className="text-gray-700 text-sm"><span className="font-bold">Increase conversion rates</span> on replacement quotes by showing the data</span>
+                      <span className="text-gray-700 text-sm"><span className="font-bold">Increase conversion rates</span> on replacement quotes</span>
                    </div>
                    <div className="flex gap-2 text-left">
                       <CheckCircle2 size={18} className="text-orange-500 shrink-0 mt-0.5" />
-                      <span className="text-gray-700 text-sm"><span className="font-bold">Eliminate errors</span> from misread model numbers or outdated warranty info</span>
+                      <span className="text-gray-700 text-sm"><span className="font-bold">Eliminate errors</span> from misread model numbers</span>
                    </div>
                 </div>
 
-                <div className="text-sm text-gray-500 mb-8 max-w-lg mx-auto">
-                   This is production-grade infrastructure, not a toy. If you want to see how this agent fits into your operation, let's talk.
-                </div>
-
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                   <button className="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-8 rounded-md transition-colors shadow-md">
-                      Schedule an Audit
-                   </button>
-                   <button className="bg-white border border-gray-300 hover:bg-gray-50 text-gray-900 font-bold py-3 px-8 rounded-md transition-colors">
-                      Learn About Implementation
-                   </button>
+                   <a 
+                     href="https://github.com/flynndavid/HomeOps-Visual-Triage-Tool" 
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="bg-gray-900 hover:bg-black text-white font-bold py-3 px-8 rounded-md transition-colors shadow-md flex items-center justify-center gap-2"
+                   >
+                      <Github size={20} />
+                      Clone Repo
+                   </a>
+                   <a 
+                     href="https://homeopshq.com/start" 
+                     target="_blank"
+                     rel="noopener noreferrer"
+                     className="bg-orange-600 hover:bg-orange-700 text-white font-bold py-3 px-8 rounded-md transition-colors shadow-md flex items-center justify-center gap-2"
+                   >
+                      Get Help Building
+                      <ArrowRight size={20} />
+                   </a>
                 </div>
             </div>
          </div>
@@ -365,46 +382,25 @@ export default function App() {
       {/* Footer */}
       <footer className="bg-[#0f172a] text-gray-400 py-12 text-sm print:hidden">
          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
-               <div className="col-span-1 md:col-span-2">
-                  <div className="flex items-center gap-2 mb-4 text-white">
-                    <div className="bg-orange-500 p-1 rounded">
-                      <Home size={16} fill="currentColor" strokeWidth={2.5} />
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+               <div className="flex flex-col gap-4">
+                  <div className="flex items-center gap-2 text-white">
+                    <div className="bg-gray-800 p-1 rounded">
+                      <Zap size={16} fill="currentColor" strokeWidth={0} />
                     </div>
-                    <span className="font-bold text-lg tracking-tight">HomeOps</span>
+                    <span className="font-bold text-lg tracking-tight">Visual Triage Tool</span>
                   </div>
-                  <p className="max-w-xs mb-6">AI transformation partner for home services. We audit what's broken, build infrastructure that works, and stay engaged as you grow.</p>
-                  <div className="flex gap-4">
-                     <a href="#" className="hover:text-white transition-colors">
-                        <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path></svg>
-                     </a>
-                     <a href="#" className="hover:text-white transition-colors">
-                       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fillRule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clipRule="evenodd"></path></svg>
-                     </a>
-                  </div>
+                  <p className="max-w-xs text-xs">An open-source demo by HomeOps. Clone it, break it, fix it, make money with it.</p>
                </div>
-               <div>
-                  <h4 className="font-bold text-white mb-4">Company</h4>
-                  <ul className="space-y-2">
-                     <li><a href="#" className="hover:text-white transition-colors">About</a></li>
-                     <li><a href="#" className="hover:text-white transition-colors">Services</a></li>
-                     <li><a href="#" className="hover:text-white transition-colors">Case Studies</a></li>
-                     <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
-                  </ul>
-               </div>
-               <div>
-                  <h4 className="font-bold text-white mb-4">Resources</h4>
-                  <ul className="space-y-2">
-                     <li><a href="#" className="hover:text-white transition-colors">Blog</a></li>
-                     <li><a href="#" className="hover:text-white transition-colors">Revenue Calculator</a></li>
-                     <li><a href="#" className="hover:text-white transition-colors">Quote Generator</a></li>
-                     <li><a href="#" className="hover:text-white transition-colors">HomeOps vs Admin</a></li>
-                  </ul>
+               
+               <div className="flex gap-8">
+                  <a href="https://github.com/flynndavid/HomeOps-Visual-Triage-Tool" className="hover:text-white transition-colors">GitHub Repo</a>
+                  <a href="https://homeopshq.com" className="hover:text-white transition-colors">HomeOps HQ</a>
+                  <a href="https://homeopshq.com/start" className="hover:text-white transition-colors">Contact</a>
                </div>
             </div>
-            <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs">
-               <p>© 2026 Automatic. All rights reserved.</p>
-               <p>Built by Automatic</p>
+            <div className="border-t border-gray-800 mt-8 pt-8 flex justify-center text-xs text-gray-500">
+               <p>© 2026 HomeOps. Open Source License (MIT).</p>
             </div>
          </div>
       </footer>
